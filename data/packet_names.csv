@@ -1,0 +1,309 @@
+47,init,0,upstream,Handshake
+47,play,0,downstream,Keep Alive
+47,play,1,downstream,Join Game
+47,play,2,downstream,Chat Message
+47,play,3,downstream,Time Update
+47,play,4,downstream,Entity Equipment
+47,play,5,downstream,Spawn Position
+47,play,6,downstream,Update Health
+47,play,7,downstream,Respawn
+47,play,8,downstream,Player Position And Look
+47,play,9,downstream,Held Item Change
+47,play,10,downstream,Use Bed
+47,play,11,downstream,Animation
+47,play,12,downstream,Spawn Player
+47,play,13,downstream,Collect Item
+47,play,14,downstream,Spawn Object
+47,play,15,downstream,Spawn Mob
+47,play,16,downstream,Spawn Painting
+47,play,17,downstream,Spawn Experience Orb
+47,play,18,downstream,Entity Velocity
+47,play,19,downstream,Destroy Entities
+47,play,20,downstream,Entity
+47,play,21,downstream,Entity Relative Move
+47,play,22,downstream,Entity Look
+47,play,23,downstream,Entity Look And Relative Move
+47,play,24,downstream,Entity Teleport
+47,play,25,downstream,Entity Head Look
+47,play,26,downstream,Entity Status
+47,play,27,downstream,Attach Entity
+47,play,28,downstream,Entity Metadata
+47,play,29,downstream,Entity Effect
+47,play,30,downstream,Remove Entity Effect
+47,play,31,downstream,Set Experience
+47,play,32,downstream,Entity Properties
+47,play,33,downstream,Chunk Data
+47,play,34,downstream,Multi Block Change
+47,play,35,downstream,Block Change
+47,play,36,downstream,Block Action
+47,play,37,downstream,Block Break Animation
+47,play,38,downstream,Map Chunk Bulk
+47,play,39,downstream,Explosion
+47,play,40,downstream,Effect
+47,play,41,downstream,Sound Effect
+47,play,42,downstream,Particle
+47,play,43,downstream,Change Game State
+47,play,44,downstream,Spawn Global Entity
+47,play,45,downstream,Open Window
+47,play,46,downstream,Close Window
+47,play,47,downstream,Set Slot
+47,play,48,downstream,Window Items
+47,play,49,downstream,Window Property
+47,play,50,downstream,Confirm Transaction
+47,play,51,downstream,Update Sign
+47,play,52,downstream,Maps
+47,play,53,downstream,Update Block Entity
+47,play,54,downstream,Sign Editor Open
+47,play,55,downstream,Statistics
+47,play,56,downstream,Player List Item
+47,play,57,downstream,Player Abilities
+47,play,58,downstream,Tab-Complete
+47,play,59,downstream,Scoreboard Objective
+47,play,60,downstream,Update Score
+47,play,61,downstream,Display Scoreboard
+47,play,62,downstream,Teams
+47,play,63,downstream,Plugin Message
+47,play,64,downstream,Disconnect
+47,play,65,downstream,Server Difficulty
+47,play,66,downstream,Combat Event
+47,play,67,downstream,Camera
+47,play,68,downstream,World Border
+47,play,69,downstream,Title
+47,play,70,downstream,Set Compression
+47,play,71,downstream,Player List Header/Footer
+47,play,72,downstream,Resource Pack Send
+47,play,73,downstream,Update Entity NBT
+47,play,0,upstream,Keep Alive
+47,play,1,upstream,Chat Message
+47,play,2,upstream,Use Entity
+47,play,3,upstream,Player
+47,play,4,upstream,Player Position
+47,play,5,upstream,Player Look
+47,play,6,upstream,Player Position And Look
+47,play,7,upstream,Player Digging
+47,play,8,upstream,Player Block Placement
+47,play,9,upstream,Held Item Change
+47,play,10,upstream,Animation
+47,play,11,upstream,Entity Action
+47,play,12,upstream,Steer Vehicle
+47,play,13,upstream,Close Window
+47,play,14,upstream,Click Window
+47,play,15,upstream,Confirm Transaction
+47,play,16,upstream,Creative Inventory Action
+47,play,17,upstream,Enchant Item
+47,play,18,upstream,Update Sign
+47,play,19,upstream,Player Abilities
+47,play,20,upstream,Tab-Complete
+47,play,21,upstream,Client Settings
+47,play,22,upstream,Client Status
+47,play,23,upstream,Plugin Message
+47,play,24,upstream,Spectate
+47,play,25,upstream,Resource Pack Status
+47,status,0,downstream,Response
+47,status,1,downstream,Ping
+47,status,0,upstream,Request
+47,status,1,upstream,Ping
+47,login,0,downstream,Disconnect
+47,login,1,downstream,Encryption Request
+47,login,2,downstream,Login Success
+47,login,3,downstream,Set Compression
+47,login,0,upstream,Login Start
+47,login,1,upstream,Encryption Response
+5,init,0,upstream,Handshake
+5,play,0,downstream,Keep Alive
+5,play,1,downstream,Join Game
+5,play,2,downstream,Chat Message
+5,play,3,downstream,Time Update
+5,play,4,downstream,Entity Equipment
+5,play,5,downstream,Spawn Position
+5,play,6,downstream,Update Health
+5,play,7,downstream,Respawn
+5,play,8,downstream,Player Position And Look
+5,play,9,downstream,Held Item Change
+5,play,10,downstream,Use Bed
+5,play,11,downstream,Animation
+5,play,12,downstream,Spawn Player
+5,play,13,downstream,Collect Item
+5,play,14,downstream,Spawn Object
+5,play,15,downstream,Spawn Mob
+5,play,16,downstream,Spawn Painting
+5,play,17,downstream,Spawn Experience Orb
+5,play,18,downstream,Entity Velocity
+5,play,19,downstream,Destroy Entities
+5,play,20,downstream,Entity
+5,play,21,downstream,Entity Relative Move
+5,play,22,downstream,Entity Look
+5,play,23,downstream,Entity Look and Relative Move
+5,play,24,downstream,Entity Teleport
+5,play,25,downstream,Entity Head Look
+5,play,26,downstream,Entity Status
+5,play,27,downstream,Attach Entity
+5,play,28,downstream,Entity Metadata
+5,play,29,downstream,Entity Effect
+5,play,30,downstream,Remove Entity Effect
+5,play,31,downstream,Set Experience
+5,play,32,downstream,Entity Properties
+5,play,33,downstream,Chunk Data
+5,play,34,downstream,Multi Block Change
+5,play,35,downstream,Block Change
+5,play,36,downstream,Block Action
+5,play,37,downstream,Block Break Animation
+5,play,38,downstream,Map Chunk Bulk
+5,play,39,downstream,Explosion
+5,play,40,downstream,Effect
+5,play,41,downstream,Sound Effect
+5,play,42,downstream,Particle
+5,play,43,downstream,Change Game State
+5,play,44,downstream,Spawn Global Entity
+5,play,45,downstream,Open Window
+5,play,46,downstream,Close Window
+5,play,47,downstream,Set Slot
+5,play,48,downstream,Window Items
+5,play,49,downstream,Window Property
+5,play,50,downstream,Confirm Transaction
+5,play,51,downstream,Update Sign
+5,play,52,downstream,Maps
+5,play,53,downstream,Update Block Entity
+5,play,54,downstream,Sign Editor Open
+5,play,55,downstream,Statistics
+5,play,56,downstream,Player List Item
+5,play,57,downstream,Player Abilities
+5,play,58,downstream,Tab-Complete
+5,play,59,downstream,Scoreboard Objective
+5,play,60,downstream,Update Score
+5,play,61,downstream,Display Scoreboard
+5,play,62,downstream,Teams
+5,play,63,downstream,Plugin Message
+5,play,64,downstream,Disconnect
+5,play,0,upstream,Keep Alive
+5,play,1,upstream,Chat Message
+5,play,2,upstream,Use Entity
+5,play,3,upstream,Player
+5,play,4,upstream,Player Position
+5,play,5,upstream,Player Look
+5,play,6,upstream,Player Position And Look
+5,play,7,upstream,Player Digging
+5,play,8,upstream,Player Block Placement
+5,play,9,upstream,Held Item Change
+5,play,10,upstream,Animation
+5,play,11,upstream,Entity Action
+5,play,12,upstream,Steer Vehicle
+5,play,13,upstream,Close Window
+5,play,14,upstream,Click Window
+5,play,15,upstream,Confirm Transaction
+5,play,16,upstream,Creative Inventory Action
+5,play,17,upstream,Enchant Item
+5,play,18,upstream,Update Sign
+5,play,19,upstream,Player Abilities
+5,play,20,upstream,Tab-Complete
+5,play,21,upstream,Client Settings
+5,play,22,upstream,Client Status
+5,play,23,upstream,Plugin Message
+5,status,0,downstream,Response
+5,status,1,downstream,Ping
+5,status,0,upstream,Request
+5,status,1,upstream,Ping
+5,login,0,downstream,Disconnect
+5,login,1,downstream,Encryption Request
+5,login,2,downstream,Login Success
+5,login,0,upstream,Login Start
+5,login,1,upstream,Encryption Response
+4,init,0,upstream,Handshake
+4,play,0,downstream,Keep Alive
+4,play,1,downstream,Join Game
+4,play,2,downstream,Chat Message
+4,play,3,downstream,Time Update
+4,play,4,downstream,Entity Equipment
+4,play,5,downstream,Spawn Position
+4,play,6,downstream,Update Health
+4,play,7,downstream,Respawn
+4,play,8,downstream,Player Position And Look
+4,play,9,downstream,Held Item Change
+4,play,10,downstream,Use Bed
+4,play,11,downstream,Animation
+4,play,12,downstream,Spawn Player
+4,play,13,downstream,Collect Item
+4,play,14,downstream,Spawn Object
+4,play,15,downstream,Spawn Mob
+4,play,16,downstream,Spawn Painting
+4,play,17,downstream,Spawn Experience Orb
+4,play,18,downstream,Entity Velocity
+4,play,19,downstream,Destroy Entities
+4,play,20,downstream,Entity
+4,play,21,downstream,Entity Relative Move
+4,play,22,downstream,Entity Look
+4,play,23,downstream,Entity Look and Relative Move
+4,play,24,downstream,Entity Teleport
+4,play,25,downstream,Entity Head Look
+4,play,26,downstream,Entity Status
+4,play,27,downstream,Attach Entity
+4,play,28,downstream,Entity Metadata
+4,play,29,downstream,Entity Effect
+4,play,30,downstream,Remove Entity Effect
+4,play,31,downstream,Set Experience
+4,play,32,downstream,Entity Properties
+4,play,33,downstream,Chunk Data
+4,play,34,downstream,Multi Block Change
+4,play,35,downstream,Block Change
+4,play,36,downstream,Block Action
+4,play,37,downstream,Block Break Animation
+4,play,38,downstream,Map Chunk Bulk
+4,play,39,downstream,Explosion
+4,play,40,downstream,Effect
+4,play,41,downstream,Sound Effect
+4,play,42,downstream,Particle
+4,play,43,downstream,Change Game State
+4,play,44,downstream,Spawn Global Entity
+4,play,45,downstream,Open Window
+4,play,46,downstream,Close Window
+4,play,47,downstream,Set Slot
+4,play,48,downstream,Window Items
+4,play,49,downstream,Window Property
+4,play,50,downstream,Confirm Transaction
+4,play,51,downstream,Update Sign
+4,play,52,downstream,Maps
+4,play,53,downstream,Update Block Entity
+4,play,54,downstream,Sign Editor Open
+4,play,55,downstream,Statistics
+4,play,56,downstream,Player List Item
+4,play,57,downstream,Player Abilities
+4,play,58,downstream,Tab-Complete
+4,play,59,downstream,Scoreboard Objective
+4,play,60,downstream,Update Score
+4,play,61,downstream,Display Scoreboard
+4,play,62,downstream,Teams
+4,play,63,downstream,Plugin Message
+4,play,64,downstream,Disconnect
+4,play,0,upstream,Keep Alive
+4,play,1,upstream,Chat Message
+4,play,2,upstream,Use Entity
+4,play,3,upstream,Player
+4,play,4,upstream,Player Position
+4,play,5,upstream,Player Look
+4,play,6,upstream,Player Position And Look
+4,play,7,upstream,Player Digging
+4,play,8,upstream,Player Block Placement
+4,play,9,upstream,Held Item Change
+4,play,10,upstream,Animation
+4,play,11,upstream,Entity Action
+4,play,12,upstream,Steer Vehicle
+4,play,13,upstream,Close Window
+4,play,14,upstream,Click Window
+4,play,15,upstream,Confirm Transaction
+4,play,16,upstream,Creative Inventory Action
+4,play,17,upstream,Enchant Item
+4,play,18,upstream,Update Sign
+4,play,19,upstream,Player Abilities
+4,play,20,upstream,Tab-Complete
+4,play,21,upstream,Client Settings
+4,play,22,upstream,Client Status
+4,play,23,upstream,Plugin Message
+4,status,0,downstream,Response
+4,status,1,downstream,Ping
+4,status,0,upstream,Request
+4,status,1,upstream,Ping
+4,login,0,downstream,Disconnect
+4,login,1,downstream,Encryption Request
+4,login,2,downstream,Login Success
+4,login,0,upstream,Login Start
+4,login,1,upstream,Encryption Response
