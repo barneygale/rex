@@ -10,7 +10,7 @@ Minecraft works or are writing your own client/server.
 Features
 --------
 
-All of these can be turned on/off and filtered by packet type:
+These can be turned on/off and filtered by packet type:
 
 - Print the direction, id and name of packets that pass through the proxy
 - Print hexdumps of packet payloads
@@ -41,7 +41,7 @@ Requirements
 Sample output
 -------------
 
-.. code-block:: console
+.. code-block:: bash
 
     # Print the ids and names of upstream (client->server) packets
     $ python rex.py -c 127.0.0.1:25566 -d up
