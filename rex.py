@@ -11,7 +11,6 @@ You can choose to handle individual packets yourself (in the usual
 quarry fashion) if you want to extract fields from packet payloads
 """
 
-import csv
 import logging
 import os.path
 
@@ -19,66 +18,19 @@ from quarry.net.proxy import DownstreamFactory, Bridge
 from quarry.mojang.profile import Profile
 
 
-def hexdump(data):
-    lines = ['']
-    bytes_read = 0
-    while len(data) > 0:
-        data_line, data = data[:16], data[16:]
-
-        l_hex = []
-        l_str = []
-        for c in data_line:
-            l_hex.append("%02x" % ord(c))
-            l_str.append(c if 32 <= ord(c) < 127 else ".")
-
-        l_hex.extend(['  ']*(16-len(l_hex)))
-        l_hex.insert(8, '')
-
-        lines.append("%08x  %s  |%s|" % (
-            bytes_read,
-            " ".join(l_hex),
-            "".join(l_str)))
-
-        bytes_read += len(data_line)
-    return "\n    ".join(lines + ["%08x" % bytes_read])
-
-
-def get_packet_names():
-    packet_names = {}
-
-    with open(os.path.join("data", "packet_names.csv")) as csvfile:
-        reader = csv.reader(csvfile)
-        for record in reader:
-            protocol_version = int(record[0])
-            protocol_mode = record[1]
-            packet_ident = int(record[2])
-            packet_direction = record[3]
-            packet_name = record[4]
-
-            packet_names[(protocol_version, protocol_mode,
-                          packet_ident, packet_direction)] = packet_name
-
-    return packet_names
-
-
 class PacketSnifferBridge(Bridge):
     packet_number = 0
 
-    def packet_received(self, buff, protocol_mode, ident, direction):
+    def packet_received(self, buff, direction, name):
         if ((self.downstream_factory.packet_direction is None
                 or direction == self.downstream_factory.packet_direction)
             and (self.downstream_factory.packet_whitelist is None
-                or (protocol_mode, ident, direction) in
+                or (direction, name) in
                     self.downstream_factory.packet_whitelist)):
 
-            packet_name = self.downstream_factory.packet_names.get(
-                (self.downstream.protocol_version,
-                 protocol_mode, ident, direction), "UNKNOWN")
-            description = "%s %s 0x%02x %s" % (
+            description = "%s %s" % (
                 "-->" if direction == "upstream" else "<--",
-                protocol_mode,
-                ident,
-                packet_name)
+                name)
 
             print_payload, dump_payload = (
                 self.downstream_factory.print_payload,
@@ -88,14 +40,12 @@ class PacketSnifferBridge(Bridge):
                 buff.save()
                 payload = buff.read()
                 if print_payload:
-                    description += hexdump(payload)
+                    description += self.dump_packet(payload)
                 if dump_payload:
-                    filename = "%06d_%s_%s_%02x_%s.bin" % (
+                    filename = "%06d_%s_%s.bin" % (
                         self.packet_number,
-                        "UP" if direction == "upstream" else "DN",
-                        protocol_mode.upper(),
-                        ident,
-                        packet_name)
+                        "up" if direction == "upstream" else "dn",
+                        name)
                     filepath = os.path.join(dump_payload, filename)
                     with open(filepath, "wb") as fd:
                         fd.write(payload)
@@ -105,14 +55,13 @@ class PacketSnifferBridge(Bridge):
 
             self.logger.info(description)
 
-        Bridge.packet_received(self, buff, protocol_mode, ident, direction)
+        Bridge.packet_received(self, buff, direction, name)
 
 
 class PacketSnifferDownstreamFactory(DownstreamFactory):
     bridge_class = PacketSnifferBridge
     log_level = logging.WARN
 
-    packet_names = {}
     packet_whitelist = None
     packet_direction = None
     print_payload = False
@@ -163,13 +112,10 @@ def main(args):
     inner_group = group.add_mutually_exclusive_group()
     inner_group.add_argument("-p", "--packet", dest="packets",
                              action="append",
-                             metavar=("PROTOCOL_MODE", "IDENT", "DIRECTION"),
-                             nargs=3,
+                             metavar=("DIRECTION", "NAME"),
+                             nargs=2,
                              help="Adds a packet to be sniffed. "
-                                  "PROTOCOL_MODE should be one of: "
-                                  "'init', 'handshake', 'status', 'login', "
-                                  "'play'. "
-                                  "IDENT should be one of: "
+                                  "DIRECTION should be one of: "
                                   "'up' (client --> server), "
                                   "'down' (server -> client).")
     inner_group.add_argument("-d", "--direction", dest="direction",
@@ -193,18 +139,16 @@ def main(args):
 
     factory = PacketSnifferDownstreamFactory()
     factory.online_mode = args.online_mode
-    factory.packet_names = get_packet_names()
     factory.force_protocol_version = args.protocol_version
 
     if args.direction is not None:
         factory.packet_direction = args.direction + "stream"
     if args.packets is not None:
         packets = set()
-        for protocol_mode, ident, direction in args.packets:
-            ident = int(ident, 16)
+        for direction, name in args.packets:
             assert direction in ('up', 'down')
             direction += 'stream'
-            packets.add((protocol_mode, ident, direction))
+            packets.add((direction, name))
         factory.packet_whitelist = packets
 
     factory.print_payload = args.print_payload
