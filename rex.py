@@ -14,12 +14,17 @@ quarry fashion) if you want to extract fields from packet payloads
 import logging
 import os.path
 
+from twisted.internet import reactor, defer
+
 from quarry.net.proxy import DownstreamFactory, Bridge
-from quarry.mojang.profile import Profile
+from quarry.auth import ProfileCLI
 
 
 class PacketSnifferBridge(Bridge):
     packet_number = 0
+
+    def make_profile(self):
+        return self.downstream_factory.profile
 
     def packet_received(self, buff, direction, name):
         if ((self.downstream_factory.packet_direction is None
@@ -73,7 +78,7 @@ def split_host_port(host_port):
     return host, int(port)
 
 
-def main(args):
+def main(argv):
     # Parse options
     import argparse
     parser = argparse.ArgumentParser()
@@ -85,11 +90,7 @@ def main(args):
                             "If not given, the proxy connects to the address "
                             "requested by the user. You probably want to set "
                             "this.")
-    group.add_argument("-a", "--account", dest="account",
-                       metavar=("EMAIL", "PASSWORD"), nargs=2,
-                       help="Sets the minecraft account with which to log "
-                            "in. Without setting this, the proxy will not be "
-                            "capable of logging in to online-mode servers.")
+    ProfileCLI.make_parser(group)
     group = parser.add_argument_group("downstream options")
     group.add_argument("-l", "--listen", dest="listen",
                        metavar="HOST[:PORT]",
@@ -132,12 +133,15 @@ def main(args):
                        help="Dumps the payload of sniffed packets to the "
                             "specified directory")
 
-    args = parser.parse_args(args)
+    args = parser.parse_args(argv)
+    run(args)
+    reactor.run()
 
-    listen_host = ""
-    listen_port = 25565
 
+@defer.inlineCallbacks
+def run(args):
     factory = PacketSnifferDownstreamFactory()
+    factory.profile = yield ProfileCLI.make_profile(args)
     factory.online_mode = args.online_mode
     factory.force_protocol_version = args.protocol_version
 
@@ -158,31 +162,17 @@ def main(args):
         listen = split_host_port(args.listen)
         listen_host = listen[0]
         listen_port = int(listen[1])
+    else:
+        listen_host = ""
+        listen_port = 25565
 
     if args.connect:
         connect = split_host_port(args.connect)
         factory.connect_host = connect[0]
         factory.connect_port = int(connect[1])
 
-    if args.account:
-        def login_ok(data):
-            factory.listen(listen_host, listen_port)
-
-        def login_failed(err):
-            print "login failed:", err.value
-            factory.stop()
-
-        username, password = args.account
-        profile = Profile()
-
-        factory.upstream_factory_class.profile = profile
-
-        deferred = profile.login(username, password)
-        deferred.addCallbacks(login_ok, login_failed)
-    else:
-        factory.listen(listen_host, listen_port)
-
-    factory.run()
+    # Connect!
+    yield factory.listen(listen_host, listen_port)
 
 
 if __name__ == "__main__":
