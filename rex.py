@@ -17,7 +17,7 @@ import os.path
 from twisted.internet import reactor, defer
 
 from quarry.net.proxy import DownstreamFactory, Bridge
-from quarry.auth import ProfileCLI
+from quarry.net.auth import ProfileCLI
 
 
 class PacketSnifferBridge(Bridge):
